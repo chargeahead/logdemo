@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- Appender for your application logs to file -->
+    <appender name="APP_LOG_FILE" class="ch.qos.logback.core.FileAppender">
+        <file>/Users/pankajjain/Downloads/logdemo/logs/app.log</file>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Appender for Spring Boot internal logs -->
+    <appender name="SPRING_LOG_FILE" class="ch.qos.logback.core.FileAppender">
+        <file>/Users/pankajjain/Downloads/logdemo/logs/spring.log</file>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Appender for your application logs to console -->
+    <appender name="APP_LOG_CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Root logger -->
+    <root level="INFO">
+        <appender-ref ref="SPRING_LOG_FILE" />
+    </root>
+
+    <!-- Logger for your application package -->
+    <logger name="com.example.logdemo" level="TRACE" additivity="false">
+        <appender-ref ref="APP_LOG_FILE" />
+        <appender-ref ref="APP_LOG_CONSOLE" />
+    </logger>
+</configuration>
